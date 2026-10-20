@@ -9,7 +9,7 @@ import json
 import urllib.request
 import urllib.error
 import urllib.parse
-from http.server import HTTPServer, BaseHTTPRequestHandler
+from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 
 # Pfade
@@ -52,13 +52,11 @@ class RuleChecker:
         """Sende Query an llama.cpp mit Regeln, gib Urteil zurück."""
         rules_text = "\n".join(f"- {r}" for r in self.rules)
         prompt = (
-            f"Du bist ein strenger Inhaltsfilter für Suchanfragen.\n"
-            f"Der Nutzer hat diese Regeln definiert:\n{rules_text}\n\n"
-            f"Prüfe diese Suchanfrage: \"{query}\"\n\n"
-            f"Antworte mit genau einem Wort:\n"
-            f"- \"ALLOW\" wenn die Anfrage in Ordnung ist\n"
-            f"- \"BLOCK: <kurzer Grund>\" wenn sie gegen eine Regel verstößt\n\n"
-            f"Antwort:"
+            "You are a strict search query filter. Classify this query based ONLY on the rules below.\n"
+            "Reply with exactly one word: ALLOW, or BLOCK: <short reason>.\n\n"
+            f"Rules:\n{rules_text}\n\n"
+            f"Search query: {query}\n"
+            "Classification:"
         )
 
         try:

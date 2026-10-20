@@ -2,6 +2,6 @@
   "llama_host": "localhost",
   "llama_port": 8080,
   "server_port": 8081,
-  "max_tokens": 50,
-  "temperature": 0.1
+  "max_tokens": 16,
+  "temperature": 0.0
 }
