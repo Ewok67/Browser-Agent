@@ -23,8 +23,8 @@ DEFAULT_CONFIG = {
     "llama_host": "localhost",
     "llama_port": 8080,
     "server_port": 8081,
-    "max_tokens": 50,
-    "temperature": 0.1
+    "max_tokens": 16,
+    "temperature": 0.0
 }
 
 
@@ -64,7 +64,7 @@ class RuleChecker:
                 "messages": [{"role": "user", "content": prompt}],
                 "max_tokens": self.config.get("max_tokens", 50),
                 "temperature": self.config.get("temperature", 0.1)
-            }).encode()
+            }).encode("utf-8")
 
             url = (f"http://{self.config['llama_host']}:"
                    f"{self.config['llama_port']}/v1/chat/completions")
@@ -153,7 +153,7 @@ class Handler(BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     port = checker.config.get("server_port", 8081)
-    server = HTTPServer(("0.0.0.0", port), Handler)
+    server = ThreadingHTTPServer(("0.0.0.0", port), Handler)
     print(f"🤖 AI Search Guard Server läuft auf http://localhost:{port}")
     print(f"   llama.cpp erwartet auf http://localhost:{checker.config['llama_port']}")
     print(f"   Regeln geladen: {len(checker.rules)}")
