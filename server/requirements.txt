@@ -1,0 +1,2 @@
+# Keine externen Abhängigkeiten — nutzt nur Python Standard Library!
+# Python 3.8+ erforderlich

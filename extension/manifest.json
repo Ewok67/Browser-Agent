@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "AI Search Guard",
+  "version": "1.0.0",
+  "description": "Leichtgewichtiger Suchanfrage-Filter mit lokalem LLM (llama.cpp)",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["http://localhost:*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.google.com/search*",
+        "https://google.com/search*",
+        "https://www.bing.com/search*",
+        "https://bing.com/search*",
+        "https://duckduckgo.com/*",
+        "https://search.brave.com/search*",
+        "https://www.baidu.com/s*",
+        "https://search.yahoo.com/search*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png"
+    }
+  }
+}

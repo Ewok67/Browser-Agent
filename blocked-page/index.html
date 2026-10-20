@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚫 Blockiert – AI Search Guard</title>
+  {{CSS}}
+</head>
+<body>
+  <div class="blocked-container">
+    <div class="icon">🚫</div>
+    <h1>Anfrage blockiert</h1>
+    <p class="query">Suchanfrage: <strong>{{QUERY}}</strong></p>
+    <p class="reason">Grund: {{REASON}}</p>
+    <p class="hint">Der lokale LLM-Filter hat diese Anfrage gegen deine Regeln geprüft.</p>
+    <button onclick="history.back()">← Zurück</button>
+  </div>
+</body>
+</html>

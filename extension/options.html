@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Search Guard – Einstellungen</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🤖 AI Search Guard</h1>
+    <p class="subtitle">Regeln für den lokalen LLM-Filter</p>
+
+    <div class="section">
+      <h2>Server Status</h2>
+      <div id="server-status" class="status">Prüfe…</div>
+    </div>
+
+    <div class="section">
+      <h2>Aktive Regeln</h2>
+      <div id="rules-list"></div>
+      <div class="add-rule">
+        <input type="text" id="new-rule" placeholder="Neue Regel eingeben…">
+        <button id="add-rule-btn">Hinzufügen</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>llama.cpp Konfiguration</h2>
+      <label>Modell-Pfad: <input type="text" id="model-path" value="models/qwen2.5-0.5b-instruct-q4_k_m.gguf"></label>
+      <label>llama.cpp Port: <input type="number" id="llama-port" value="8080"></label>
+      <label>Server Port: <input type="number" id="server-port" value="8081"></label>
+      <button id="save-config-btn">Konfiguration speichern</button>
+    </div>
+
+    <div class="section">
+      <h2>Aktion bei Verstoß</h2>
+      <label><input type="radio" name="action" value="redirect" checked> Redirect zu Localhost-Seite</label>
+      <label><input type="radio" name="action" value="warn" disabled>Nur Warnung (coming soon)</label>
+    </div>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>

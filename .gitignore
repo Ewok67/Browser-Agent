@@ -1,0 +1,17 @@
+# Große Dateien — nicht in Git
+models/
+llama-server/
+
+# Python
+__pycache__/
+*.pyc
+server/rules.json
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+llama-server/
